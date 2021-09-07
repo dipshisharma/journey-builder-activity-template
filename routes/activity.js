@@ -52,7 +52,7 @@ Custom function to insert the executed Journey Data into a MC Data Extension
 */
 
 function insertDE(subscriberKey, emailAddress) {
-    var FuelSoap = require('fuel-soap');
+    var FuelSoap = require(Path.join(__dirname, '..', 'lib', 'fuel-soap.js'));
 
     console.log("process.env.clientId: " + process.env.clientId);
     console.log("process.env.clientSecret: " + process.env.clientSecret);
