@@ -22,7 +22,7 @@
              }
            ],
           "outArguments": [],
-          "url": "https://mccm513slg7yqpvrqxd0phfqlw18/journeybuilder/execute",
+          "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -33,22 +33,22 @@
     },
     "configurationArguments": {
       "save": {
-        "url": "https://mccm513slg7yqpvrqxd0phfqlw18/journeybuilder/save",
+        "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://mccm513slg7yqpvrqxd0phfqlw18/journeybuilder/publish",
+        "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://mccm513slg7yqpvrqxd0phfqlw18/journeybuilder/stop",
+        "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://mccm513slg7yqpvrqxd0phfqlw18/journeybuilder/validate",
+        "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/validate",
         "verb": "POST",
         "useJwt": true
       }
