@@ -8,14 +8,19 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Template",
-          "description": "A Template for a custom Journey Builder activity",
+            "name": "Traction Custom Journey Activity POC",
+          "description": "A custom Journey Builder activity",
           "step1Label": "Configure Activity"
         }
     },
     "arguments": {
         "execute": {
-           "inArguments":[],
+           "inArguments":[
+             {
+               "subscriberKey": "{{Contact.Attribute.CustomGroupTest.SubscriberKey}}",
+               "emailAddress": "{{Contact.Attribute.CustomGroupTest.EmailAddress}}"
+             }
+           ],
           "outArguments": [],
           "url": "https://mccm513slg7yqpvrqxd0phfqlw18/journeybuilder/execute",
            "verb": "POST",

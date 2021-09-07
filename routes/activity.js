@@ -47,6 +47,59 @@ function logData(req) {
     console.log("secure: " + req.secure);
     console.log("originalUrl: " + req.originalUrl);
 }
+/*
+Custom function to insert the executed Journey Data into a MC Data Extension
+*/
+
+function insertDE(subscriberKey, emailAddress) {
+    var FuelSoap = require('fuel-soap');
+
+    console.log("process.env.clientId: " + process.env.clientId);
+    console.log("process.env.clientSecret: " + process.env.clientSecret);
+    var options = {
+        auth: {
+            clientId: process.env.clientId, 
+            clientSecret: process.env.clientSecret
+        },
+        soapEndpoint: 'https://webservice.exacttarget.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx
+    };
+
+    var SoapClient = new FuelSoap(options);
+
+    var co = {
+        "CustomerKey": "Custom_Journey_Activity_Injection_DE",
+        "Keys":[
+                {
+                    "Key":
+                    {
+                        "Name":"SubscriberKey",
+                        "Value": subscriberKey
+                    }
+                }
+            ],
+            Properties: {
+                Property: [
+                    {
+                        Name: 'EmailAddress',
+                        Value: emailAddress
+                    }
+                ]
+            }
+    };
+
+    var uo = {
+        SaveOptions: [{"SaveOption":{PropertyName:"DataExtensionObject",SaveAction:"UpdateAdd"}}]
+    };
+
+    SoapClient.update('DataExtensionObject',co,uo, function(err, response){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(response.body.Results);
+        }
+    });
+}
 
 /*
  * POST Handler for / route of Activity (this is the edit route).
@@ -88,6 +141,9 @@ exports.execute = function (req, res) {
             var decodedArgs = decoded.inArguments[0];
             
             logData(req);
+            console.log('decodedArgs: ' + JSON.stringify(decodedArgs));
+
+            insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);
             res.send(200, 'Execute');
         } else {
             console.error('inArguments invalid.');
