@@ -73,7 +73,7 @@ function insertDE(subscriberKey, emailAddress) {
                     "Key":
                     {
                         "Name":"SubscriberKey",
-                        "Value": subscriberKey
+                        "Value": subscriberKey 
                     }
                 }
             ],
