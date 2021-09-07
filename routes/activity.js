@@ -61,7 +61,7 @@ function insertDE(subscriberKey, emailAddress) {
             clientId: process.env.clientId, 
             clientSecret: process.env.clientSecret
         },
-        soapEndpoint: 'https://webservice.exacttarget.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx
+        soapEndpoint: 'https://mccm513slg7yqpvrqxd0phfqlw18.soap.marketingcloudapis.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx        
     };
 
     var SoapClient = new FuelSoap(options);
