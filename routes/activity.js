@@ -80,8 +80,12 @@ function insertDE(subscriberKey, emailAddress) {
             Properties: {
                 Property: [
                     {
-                        Name: 'EmailAddress',
+                        Name: "EmailAddress",
                         Value: emailAddress
+                    },
+                    {
+                        Name: "Text",
+                        Value: "Test Test"
                     }
                 ]
             }
