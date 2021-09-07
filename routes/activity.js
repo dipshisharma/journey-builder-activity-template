@@ -67,7 +67,7 @@ function insertDE(subscriberKey, emailAddress) {
     var SoapClient = new FuelSoap(options);
 
     var co = {
-        "CustomerKey": "Custom_Journey_Activity_Injection_DE",
+        "CustomerKey": "Custom_Journey_Activity_Response_DE",
         "Keys":[
                 {
                     "Key":
