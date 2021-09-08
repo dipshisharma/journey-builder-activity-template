@@ -63,6 +63,7 @@ function insertDE(subscriberKey, emailAddress) {
             authVersion: 2
             
         },
+        authUrl: "https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token",
         soapEndpoint: 'https://mccm513slg7yqpvrqxd0phfqlw18.soap.marketingcloudapis.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx        
     };
 
