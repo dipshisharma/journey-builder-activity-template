@@ -68,6 +68,7 @@ function insertDE(subscriberKey, emailAddress) {
     };
 
     var SoapClient = new FuelSoap(options);
+    console.log(SoapClient);
 
     var co = {
         "CustomerKey": "Custom_JB_Activity_Dipshi",
