@@ -60,7 +60,8 @@ function insertDE(subscriberKey, emailAddress) {
         auth: {
             clientId: process.env.clientId, 
             clientSecret: process.env.clientSecret,
-            authVersion: 2
+            authVersion: 2,
+            accountId: 10991211
             
         },
         soapEndpoint: 'https://mccm513slg7yqpvrqxd0phfqlw18.soap.marketingcloudapis.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx        
