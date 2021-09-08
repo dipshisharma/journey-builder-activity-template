@@ -61,14 +61,14 @@ function insertDE(subscriberKey, emailAddress) {
             clientId: process.env.clientId, 
             clientSecret: process.env.clientSecret,
             authVersion: 2,
+            authUrl: "https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token",
             accountId: process.env.accountId
         },
-        authUrl: "https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token",
         soapEndpoint: 'https://mccm513slg7yqpvrqxd0phfqlw18.soap.marketingcloudapis.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx        
     };
 
     var SoapClient = new FuelSoap(options);
-    console.log(SoapClient);
+    console.log('Soap Client: '+SoapClient);
 
     var co = {
         "CustomerKey": "Custom_JB_Activity_Dipshi",
