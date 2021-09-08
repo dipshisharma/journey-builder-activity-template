@@ -60,7 +60,8 @@ function insertDE(subscriberKey, emailAddress) {
         auth: {
             clientId: process.env.clientId, 
             clientSecret: process.env.clientSecret,
-            authVersion: 2
+            authVersion: 2,
+            accountId: process.env.accountId
             
         },
         authUrl: "https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token",
