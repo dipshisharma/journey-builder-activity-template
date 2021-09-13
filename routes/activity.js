@@ -67,9 +67,27 @@ function insertDE(subscriberKey, emailAddress) {
         soapEndpoint: 'https://mccm513slg7yqpvrqxd0phfqlw18.soap.marketingcloudapis.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx        
     };
 
-    var SoapClient = new FuelSoap(options);
-    console.log('Soap Client: '+SoapClient);
+    //var SoapClient = new FuelSoap(options);
+    //console.log('Soap Client: '+SoapClient);
 
+    const axios = require('axios');
+    const getAuthToken = async() =>{
+        try {
+            let response = axios.post(
+                'https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token',
+                {
+                    data:{
+                        client_id: 'sdlxq36utr991wy1z5cdq2iq',
+                        client_secret: 'j1HXzHEWUn2mgVNjat3gY3Ag',
+                        grant_type: 'client_credentials'
+                    }
+                }
+            );
+            console.log('Access Token Response: '+ response);
+        } catch (error) {
+            console.log('Error occured while authorizing MC: '+ error.message);
+        }
+    }
     var co = {
         "CustomerKey": "Custom_JB_Activity_Dipshi",
         "Keys":[
@@ -95,18 +113,18 @@ function insertDE(subscriberKey, emailAddress) {
             }
     };
 
-    var uo = {
-        SaveOptions: [{"SaveOption":{PropertyName:"DataExtensionObject",SaveAction:"UpdateAdd"}}]
-    };
+    // var uo = {
+    //     SaveOptions: [{"SaveOption":{PropertyName:"DataExtensionObject",SaveAction:"UpdateAdd"}}]
+    // };
 
-    SoapClient.update('DataExtensionObject',co,uo, function(err, response){
-        if(err){
-            console.log(err);
-        }
-        else{
-            console.log(response.body.Results);
-        }
-    });
+    // SoapClient.update('DataExtensionObject',co,uo, function(err, response){
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //         console.log(response.body.Results);
+    //     }
+    // });
 }
 
 /*
