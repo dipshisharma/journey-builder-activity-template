@@ -106,7 +106,7 @@ function insertDE(subscriberKey, emailAddress) {
             co,
             {
                 headers:{
-                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/json',
                     'Authorization': 'Bearer '+ access_token
                 }
             }
@@ -118,6 +118,9 @@ function insertDE(subscriberKey, emailAddress) {
         })
         .catch(function (error) {
             console.log('Error Occured while inserting the record into DE: '+ error.message);
+            console.log('Error Occured while inserting the record into DE: '+ error);
+            console.log('Error Occured while inserting the record into DE: '+ JSON.stringify(error));
+
         });
     })
     .catch(function (error) {
