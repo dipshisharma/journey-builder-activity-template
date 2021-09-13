@@ -112,18 +112,18 @@ function insertDE(subscriberKey, emailAddress) {
         co,
         {
             headers:{
-                'Content-Type': 'application/JSON',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer'+ access_token
             }
         }
     )
     .then(response =>{
-        console.log('Access Token Response Data: '+ response.data.keys);
-        console.log('Access Token Response Data: '+ JSON.stringify(response));
-        const access_token = response.data.access_token;
+        console.log('Insert the record in DE: '+ response.data.keys);
+        console.log('Stringified response: '+ JSON.stringify(response));
+        // const access_token = response.data.access_token;
     })
     .catch(function (error) {
-        console.log('Error Occured while inserting the record into DE: '+error);
+        console.log('Error Occured while inserting the record into DE: '+error.message);
     });
 
     // var uo = {
