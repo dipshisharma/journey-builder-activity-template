@@ -73,10 +73,10 @@ function insertDE(subscriberKey, emailAddress) {
     var co = [
         {
             "keys":{
-                    "SubscriberKey": subscriberKey
+                    "SubscriberKey": "disharma@tractionondemand.com"
                     },
             "values":{
-                    "EmailAddress": emailAddress,
+                    "EmailAddress": "disharma@tractionondemand.com",
                     "Text": "This is the Custom Journey Activity Demo",
                     "Campaign": "Loan Follow-Up"
                     }
