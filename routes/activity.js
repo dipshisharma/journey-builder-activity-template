@@ -76,11 +76,11 @@ function insertDE(subscriberKey, emailAddress) {
         let response = axios.post(
             'https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token',
             {
-                data:{
+                // data:{
                     client_id: 'sdlxq36utr991wy1z5cdq2iq',
                     client_secret: 'j1HXzHEWUn2mgVNjat3gY3Ag',
                     grant_type: 'client_credentials'
-                }
+                // }
             }
         ).then(response =>{
             console.log('Access Token Response: '+ response);
