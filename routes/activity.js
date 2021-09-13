@@ -107,7 +107,7 @@ function insertDE(subscriberKey, emailAddress) {
             {
                 headers:{
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer'+ access_token
+                    'Authorization': 'Bearer '+ access_token
                 }
             }
         )
