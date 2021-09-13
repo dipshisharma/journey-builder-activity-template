@@ -71,57 +71,60 @@ function insertDE(subscriberKey, emailAddress) {
     //console.log('Soap Client: '+SoapClient);
 
     const axios = require('axios');
+    const access_token;
    
-    // try {
-        let response = axios.post(
-            'https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token',
-            {
-                // data:{
-                    client_id: 'sdlxq36utr991wy1z5cdq2iq',
-                    client_secret: 'j1HXzHEWUn2mgVNjat3gY3Ag',
-                    grant_type: 'client_credentials'
-                // }
-            }
-        ).then(response =>{
-            console.log('Access Token Response Data: '+ response.data.access_token);
-            console.log('Access Token Response Data: '+ response.data.token_type);
-            console.log('Access Token Response Data: '+ JSON.stringify(response));
-
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-        // console.log('Access Token Response: '+ response);
-    // } catch (error) {
-    //     console.log('Error occured while authorizing MC: '+ error.message);
-    // }
+    axios.post(
+        'https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token',
+        {
+            client_id: 'sdlxq36utr991wy1z5cdq2iq',
+            client_secret: 'j1HXzHEWUn2mgVNjat3gY3Ag',
+            grant_type: 'client_credentials'
+        }
+    ).then(response =>{
+        console.log('Access Token Response Data: '+ response.data.access_token);
+        console.log('Access Token Response Data: '+ response.data.token_type);
+        console.log('Access Token Response Data: '+ JSON.stringify(response));
+        access_token = response.data.access_token;
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+        
 
 
 
-    var co = {
-        "CustomerKey": "Custom_JB_Activity_Dipshi",
-        "Keys":[
-                {
-                    "Key":
-                    {
-                        "Name":"SubscriberKey",
-                        "Value": subscriberKey 
-                    }
-                }
-            ],
-            Properties: {
-                Property: [
-                    {
-                        Name: "EmailAddress",
-                        Value: emailAddress
+    var co = [
+        {
+            "keys":{
+                    "SubscriberKey": subscriberKey,
                     },
-                    {
-                        Name: "Text",
-                        Value: "Test Test"
+            "values":{
+                    "EmailAddress": emailAddress,
+                    "Text": "This is the Custom Journey Activity Demo",
+                    "Campaign": "Loan Follow-Up"
                     }
-                ]
+        }
+    ]
+
+    //make the post to inject the Subsriber back into MC Data Extension
+    axios.post(
+        'https://mccm513slg7yqpvrqxd0phfqlw18.rest.marketingcloudapis.com/hub/v1/dataevents/key:'+'Custom_Journey_Activity_Response_DE'+'/rowset', 
+        co,
+        {
+            headers:{
+                'Content-Type': 'application/JSON',
+                'Authorization': 'Bearer'+ access_token
             }
-    };
+        }
+    )
+    .then(response =>{
+        console.log('Access Token Response Data: '+ response.data.keys);
+        console.log('Access Token Response Data: '+ JSON.stringify(response));
+        const access_token = response.data.access_token;
+    })
+    .catch(function (error) {
+        console.log('Error Occured while inserting the record into DE: '+error);
+    });
 
     // var uo = {
     //     SaveOptions: [{"SaveOption":{PropertyName:"DataExtensionObject",SaveAction:"UpdateAdd"}}]
