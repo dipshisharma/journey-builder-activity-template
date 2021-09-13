@@ -82,11 +82,16 @@ function insertDE(subscriberKey, emailAddress) {
                     grant_type: 'client_credentials'
                 }
             }
-        );
-        console.log('Access Token Response: '+ response);
+        ).then(response =>{
+            console.log('Access Token Response: '+ response);
+        });
+        // console.log('Access Token Response: '+ response);
     } catch (error) {
         console.log('Error occured while authorizing MC: '+ error.message);
     }
+
+
+
     var co = {
         "CustomerKey": "Custom_JB_Activity_Dipshi",
         "Keys":[
