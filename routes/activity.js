@@ -71,7 +71,7 @@ function insertDE(subscriberKey, emailAddress) {
     //console.log('Soap Client: '+SoapClient);
 
     const axios = require('axios');
-    const access_token= '';
+    let access_token= '';
    
     axios.post(
         'https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token',
