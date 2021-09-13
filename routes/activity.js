@@ -191,7 +191,7 @@ exports.execute = function (req, res) {
             
             logData(req);
             console.log('decodedArgs: ' + JSON.stringify(decodedArgs));
-            console.log('decodedArgs Subscriber Key: ' + decodedArgs.subscriberKey);
+            console.log('In Arguments: ' + decodedArgs.inArguments);
             console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
 
             insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);

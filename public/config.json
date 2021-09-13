@@ -8,7 +8,7 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Traction Custom Journey Activity POC",
+            "name": "TextKit Integration - Custom Journey Activity",
           "description": "A custom Journey Builder activity",
           "step1Label": "Configure Activity"
         }
