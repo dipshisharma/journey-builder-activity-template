@@ -113,7 +113,7 @@ function insertDE(subscriberKey, emailAddress) {
         )
         .then(response =>{
             console.log('Insert the record in DE: '+ response.data.keys);
-            console.log('Stringified response: '+ JSON.stringify(response));
+            // console.log('Stringified response: '+ JSON.stringify(response));
             // const access_token = response.data.access_token;
         })
         .catch(function (error) {
@@ -191,6 +191,8 @@ exports.execute = function (req, res) {
             
             logData(req);
             console.log('decodedArgs: ' + JSON.stringify(decodedArgs));
+            console.log('decodedArgs Subscriber Key: ' + decodedArgs.subscriberKey);
+            console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
 
             insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);
             res.send(200, 'Execute');
