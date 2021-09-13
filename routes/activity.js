@@ -72,7 +72,7 @@ function insertDE(subscriberKey, emailAddress) {
 
     const axios = require('axios');
    
-    try {
+    // try {
         let response = axios.post(
             'https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token',
             {
@@ -84,11 +84,14 @@ function insertDE(subscriberKey, emailAddress) {
             }
         ).then(response =>{
             console.log('Access Token Response: '+ response);
+        })
+        .catch(function (error) {
+            console.log(error);
         });
         // console.log('Access Token Response: '+ response);
-    } catch (error) {
-        console.log('Error occured while authorizing MC: '+ error.message);
-    }
+    // } catch (error) {
+    //     console.log('Error occured while authorizing MC: '+ error.message);
+    // }
 
 
 
