@@ -73,7 +73,7 @@ function insertDE(subscriberKey, emailAddress) {
     var co = [
         {
             "keys":{
-                    "SubscriberKey": subscriberKey,
+                    "SubscriberKey": subscriberKey
                     },
             "values":{
                     "EmailAddress": emailAddress,
@@ -118,6 +118,8 @@ function insertDE(subscriberKey, emailAddress) {
         })
         .catch(function (error) {
             console.log('Error Occured while inserting the record into DE: '+ error.message);
+            console.log('Error Occured while inserting the record into DE: '+ error.response);
+            console.log('Error Occured while inserting the record into DE: '+ error.request);
             console.log('Error Occured while inserting the record into DE: '+ error);
             console.log('Error Occured while inserting the record into DE: '+ JSON.stringify(error));
 
