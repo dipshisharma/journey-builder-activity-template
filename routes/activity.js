@@ -83,7 +83,8 @@ function insertDE(subscriberKey, emailAddress) {
                 // }
             }
         ).then(response =>{
-            console.log('Access Token Response Data: '+ response.data);
+            console.log('Access Token Response Data: '+ response.data.access_token);
+            console.log('Access Token Response Data: '+ response.data.token_type);
             console.log('Access Token Response Data: '+ JSON.stringify(response));
 
         })
