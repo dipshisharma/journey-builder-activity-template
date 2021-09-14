@@ -186,12 +186,18 @@ exports.execute = function (req, res) {
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
+            console.log('In Arguments: ' + decodedArgs.inArguments[0]);
+            console.log('In Arguments Length: ' + decodedArgs.inArguments.length);
+            console.log('Decoded Args Execute: ' + decodedArgs.execute);
+            console.log('Decoded Args Execute In Arguments: ' + decodedArgs.execute.inArguments);
+            
+            
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
             
             logData(req);
             console.log('decodedArgs: ' + JSON.stringify(decodedArgs));
-            console.log('In Arguments: ' + decodedArgs.inArguments);
+            
             console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
 
             insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);
