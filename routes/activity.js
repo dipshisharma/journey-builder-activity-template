@@ -186,10 +186,10 @@ exports.execute = function (req, res) {
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
-            console.log('In Arguments: ' + decodedArgs.inArguments[0]);
-            console.log('In Arguments Length: ' + decodedArgs.inArguments.length);
-            console.log('Decoded Args Execute: ' + decodedArgs.execute);
-            console.log('Decoded Args Execute In Arguments: ' + decodedArgs.execute.inArguments);
+            console.log('In Arguments: ' + decoded.inArguments[0]);
+            console.log('In Arguments Length: ' + decoded.inArguments.length);
+            console.log('Decoded Args Execute: ' + decoded.execute);
+            console.log('Decoded Args Execute In Arguments: ' + decoded.execute.inArguments);
             
             
             // decoded in arguments
