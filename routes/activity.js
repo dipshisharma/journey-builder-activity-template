@@ -186,10 +186,12 @@ exports.execute = function (req, res) {
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
+            console.log('Decoded: ' + JSON.stringify(decoded));
             console.log('In Arguments: ' + decoded.inArguments[0]);
             console.log('In Arguments Length: ' + decoded.inArguments.length);
-            console.log('In Arguments Stringify: ' + JSON.stringify(decoded.inArguments[0]));
-            
+            console.log('In Arguments Length: ' + decoded.inArguments[0].emailAddress);
+            console.log('In Arguments Length: ' + decoded.inArguments[0].subscriberKey);
+           
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
