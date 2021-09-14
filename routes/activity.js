@@ -190,9 +190,11 @@ exports.execute = function (req, res) {
             console.log('Decoded: ' + JSON.stringify(decoded));
             console.log('In Arguments: ' + decoded.inArguments[0]);
             console.log('In Arguments Length: ' + decoded.inArguments.length);
-            console.log('In Arguments Length: ' + decoded.inArguments[0].emailAddress);
+            console.log('In Arguments Length: ' + decoded.inArguments[0].tokens.token);
             console.log('In Arguments Length: ' + decoded.inArguments[0].subscriberKey);
-           
+            JWT(decoded.inArguments[0].tokens.token, process.env.jwtSecret, (err, decodedInArgs)=>{
+                console.log(' Decoded In ARGS: '+JSON.stringify(decodedInArgs));
+            });
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
