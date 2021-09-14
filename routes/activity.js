@@ -56,30 +56,17 @@ function insertDE(subscriberKey, emailAddress) {
 
     console.log("process.env.clientId: " + process.env.clientId);
     console.log("process.env.clientSecret: " + process.env.clientSecret);
-    var options = {
-        auth: {
-            clientId: process.env.clientId, 
-            clientSecret: process.env.clientSecret,
-            authVersion: 2,
-            authUrl: "https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token",
-            accountId: process.env.accountId
-        },
-        soapEndpoint: 'https://mccm513slg7yqpvrqxd0phfqlw18.soap.marketingcloudapis.com/Service.asmx' // default --> https://webservice.exacttarget.com/Service.asmx        
-    };
-
-    //var SoapClient = new FuelSoap(options);
-    //console.log('Soap Client: '+SoapClient);
 
     var co = [
         {
             "keys":{
                     "SubscriberKey": subscriberKey
-                    },
+            },
             "values":{
                     "EmailAddress": emailAddress,
                     "Text": "This is the Custom Journey Activity Demo",
                     "Campaign": "Loan Follow-Up"
-                    }
+            }
         }
     ];
 
@@ -97,7 +84,7 @@ function insertDE(subscriberKey, emailAddress) {
         // console.log('Access Token Response Data: '+ response.data.access_token);
 
         access_token = response.data.access_token;
-        console.log('Access Token is: '+ access_token);
+        // console.log('Access Token is: '+ access_token);
 
         //make the post to inject the Subsriber back into MC Data Extension
         axios.post(
@@ -155,14 +142,7 @@ exports.execute = function (req, res) {
             console.error(err);
             return res.status(401).end();
         }
-
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            
-            // console.log('Decoded: ' + JSON.stringify(decoded));
-            // console.log('In Arguments: ' + decoded.inArguments[0]);
-            // console.log('In Arguments Length: ' + decoded.inArguments.length);
-            // console.log('In Arguments Length: ' + decoded.inArguments[0].tokens.token);
-            // console.log('In Arguments Length: ' + decoded.inArguments[0].subscriberKey);
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
