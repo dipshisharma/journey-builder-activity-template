@@ -188,8 +188,7 @@ exports.execute = function (req, res) {
             
             console.log('In Arguments: ' + decoded.inArguments[0]);
             console.log('In Arguments Length: ' + decoded.inArguments.length);
-            console.log('Decoded Args Execute: ' + decoded.execute);
-            console.log('Decoded Args Execute In Arguments: ' + decoded.execute.inArguments);
+            console.log('In Arguments Stringify: ' + JSON.stringify(decoded.inArguments[0]));
             
             
             // decoded in arguments
