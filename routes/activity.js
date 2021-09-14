@@ -73,10 +73,10 @@ function insertDE(subscriberKey, emailAddress) {
     var co = [
         {
             "keys":{
-                    "SubscriberKey": "disharma@tractionondemand.com"
+                    "SubscriberKey": subscriberKey
                     },
             "values":{
-                    "EmailAddress": "disharma@tractionondemand.com",
+                    "EmailAddress": emailAddress,
                     "Text": "This is the Custom Journey Activity Demo",
                     "Campaign": "Loan Follow-Up"
                     }
@@ -87,67 +87,39 @@ function insertDE(subscriberKey, emailAddress) {
     let access_token= '';
    
     axios.post(
-        'https://mccm513slg7yqpvrqxd0phfqlw18.auth.marketingcloudapis.com/v2/token',
+        process.env.authUrl,
         {
-            client_id: 'sdlxq36utr991wy1z5cdq2iq',
-            client_secret: 'j1HXzHEWUn2mgVNjat3gY3Ag',
+            client_id: process.env.clientId,
+            client_secret: process.env.clientSecret,
             grant_type: 'client_credentials'
         }
     ).then(response =>{
-        console.log('Access Token Response Data: '+ response.data.access_token);
-        console.log('Access Token Response Data: '+ response.data.token_type);
-        // console.log('Access Token Response Data: '+ JSON.stringify(response));
+        // console.log('Access Token Response Data: '+ response.data.access_token);
+
         access_token = response.data.access_token;
         console.log('Access Token is: '+ access_token);
 
         //make the post to inject the Subsriber back into MC Data Extension
         axios.post(
-            'https://mccm513slg7yqpvrqxd0phfqlw18.rest.marketingcloudapis.com/hub/v1/dataevents/key:'+'Custom_Journey_Activity_Response_DE'+'/rowset', 
+            process.env.restUrl+'/hub/v1/dataevents/key:'+'Custom_Journey_Activity_Response_DE'+'/rowset', 
             co,
             {
                 headers:{
-                    // 'Content-Type': 'application/json',
                     'Authorization': 'Bearer '+ access_token
                 }
             }
         )
         .then(response =>{
             console.log('Insert the record in DE: '+ response.data.keys);
-            // console.log('Stringified response: '+ JSON.stringify(response));
-            // const access_token = response.data.access_token;
         })
         .catch(function (error) {
             console.log('Error Occured while inserting the record into DE: '+ error.message);
-            console.log('Error Occured while inserting the record into DE: '+ error.response);
-            console.log('Error Occured while inserting the record into DE: '+ error.request);
-            console.log('Error Occured while inserting the record into DE: '+ error);
-            console.log('Error Occured while inserting the record into DE: '+ JSON.stringify(error));
 
         });
     })
     .catch(function (error) {
-        console.log(error);
+        console.log(error.message);
     });
-        
-
-
-    
-    
-
-    
-
-    // var uo = {
-    //     SaveOptions: [{"SaveOption":{PropertyName:"DataExtensionObject",SaveAction:"UpdateAdd"}}]
-    // };
-
-    // SoapClient.update('DataExtensionObject',co,uo, function(err, response){
-    //     if(err){
-    //         console.log(err);
-    //     }
-    //     else{
-    //         console.log(response.body.Results);
-    //     }
-    // });
 }
 
 /*
@@ -175,7 +147,6 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
 
-    console.log('Request body sent to JWT: '+ JSON.stringify(req.body));
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
@@ -187,14 +158,11 @@ exports.execute = function (req, res) {
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
-            console.log('Decoded: ' + JSON.stringify(decoded));
-            console.log('In Arguments: ' + decoded.inArguments[0]);
-            console.log('In Arguments Length: ' + decoded.inArguments.length);
-            console.log('In Arguments Length: ' + decoded.inArguments[0].tokens.token);
-            console.log('In Arguments Length: ' + decoded.inArguments[0].subscriberKey);
-            JWT(decoded.inArguments[0].tokens.token, process.env.jwtSecret, (err, decodedInArgs)=>{
-                console.log(' Decoded In ARGS: '+JSON.stringify(decodedInArgs));
-            });
+            // console.log('Decoded: ' + JSON.stringify(decoded));
+            // console.log('In Arguments: ' + decoded.inArguments[0]);
+            // console.log('In Arguments Length: ' + decoded.inArguments.length);
+            // console.log('In Arguments Length: ' + decoded.inArguments[0].tokens.token);
+            // console.log('In Arguments Length: ' + decoded.inArguments[0].subscriberKey);
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
@@ -203,6 +171,7 @@ exports.execute = function (req, res) {
             console.log('decodedArgs: ' + JSON.stringify(decodedArgs));
             
             console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
+            console.log('decodedArgs Subscriber Key: ' + decodedArgs.subscriberKey);
 
             insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);
             res.send(200, 'Execute');
