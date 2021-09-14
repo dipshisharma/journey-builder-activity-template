@@ -91,10 +91,7 @@ define([
         var postcardTextValue = $('#postcard-text').val();
 
         payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens,
-            "emailAddress": "{{Contact.Attribute.CustomGroupTest.EmailAddress}}",
-            "subscriberKey": "{{Contact.Attribute.CustomGroupTest.SubscriberKey}}"
-        }];
+            "tokens": authTokens,        }];
         
         payload['metaData'].isConfigured = true;
 
