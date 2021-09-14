@@ -17,8 +17,8 @@
         "execute": {
            "inArguments":[
              {
-               "subscriberKey": "{{Contact.Attribute.CustomGroupTest.SubscriberKey}}",
-               "emailAddress": "{{Contact.Attribute.CustomGroupTest.EmailAddress}}"
+               "subscriberKey": "1234567890",
+               "emailAddress": "disharma@tractionondemand.com"
              }
            ],
           "outArguments": [],
