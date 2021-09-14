@@ -61,7 +61,7 @@ define([
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-        console.log('In customActivity.js: '+ inArguments);
+        console.log(inArguments);
 
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
@@ -78,6 +78,7 @@ define([
     }
 
     function onGetTokens(tokens) {
+        console.log('*** onGetTokens ***');
         console.log(tokens);
         authTokens = tokens;
     }
@@ -87,11 +88,15 @@ define([
     }
 
     function save() {
+        console.log('*** called Save in Custom activity ***');
         var postcardURLValue = $('#postcard-url').val();
         var postcardTextValue = $('#postcard-text').val();
 
         payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens
+            "tokens": authTokens,
+            "subscriberKey": "1234567890010",
+            "emailAddress": "disharma@tractionondemand.com"
+
         }];
         
         payload['metaData'].isConfigured = true;
