@@ -78,6 +78,7 @@ define([
     }
 
     function onGetTokens(tokens) {
+        console.log('*** onGetTokens ***');
         console.log(tokens);
         authTokens = tokens;
     }
@@ -87,11 +88,15 @@ define([
     }
 
     function save() {
+        console.log('*** called Save in Custom activity ***');
         var postcardURLValue = $('#postcard-url').val();
         var postcardTextValue = $('#postcard-text').val();
 
         payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens
+            "tokens": authTokens,
+            "subscriberKey": "{{Contact.Attribute.Custom_Journey_Activity_DE.SubscriberKey}}",
+            "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}"
+
         }];
         
         payload['metaData'].isConfigured = true;

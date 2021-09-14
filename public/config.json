@@ -17,8 +17,8 @@
         "execute": {
            "inArguments":[
              {
-               "subscriberKey": "{{Contact.Attribute.CustomGroupTest.SubscriberKey}}",
-               "emailAddress": "{{Contact.Attribute.CustomGroupTest.EmailAddress}}"
+               "subscriberKey": "{{Contact.Attribute.Custom_Journey_Activity_DE.SubscriberKey}}",
+               "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}"
              }
            ],
           "outArguments": [],
