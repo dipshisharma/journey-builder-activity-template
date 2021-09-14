@@ -175,6 +175,7 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
 
+    console.log('Request body sent to JWT: '+ JSON.stringify(req.body));
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
@@ -186,12 +187,21 @@ exports.execute = function (req, res) {
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
+            console.log('Decoded: ' + JSON.stringify(decoded));
+            console.log('In Arguments: ' + decoded.inArguments[0]);
+            console.log('In Arguments Length: ' + decoded.inArguments.length);
+            console.log('In Arguments Length: ' + decoded.inArguments[0].tokens.token);
+            console.log('In Arguments Length: ' + decoded.inArguments[0].subscriberKey);
+            JWT(decoded.inArguments[0].tokens.token, process.env.jwtSecret, (err, decodedInArgs)=>{
+                console.log(' Decoded In ARGS: '+JSON.stringify(decodedInArgs));
+            });
+            
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
             
             logData(req);
             console.log('decodedArgs: ' + JSON.stringify(decodedArgs));
-            console.log('In Arguments: ' + decodedArgs.inArguments);
+            
             console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
 
             insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);
