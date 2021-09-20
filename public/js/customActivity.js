@@ -98,8 +98,10 @@ define([
 
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
-            "subscriberKey": "{{Contact.Attribute.Custom_Journey_Activity_DE.SubscriberKey}}",
-            "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}",
+            // "subscriberKey": "{{Contact.Attribute.Custom_Journey_Activity_DE.SubscriberKey}}",
+            "subscriberKey": subKey,
+            // "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}",
+            "emailAddress": email,
             "testArg": "test123"
         }];
         
