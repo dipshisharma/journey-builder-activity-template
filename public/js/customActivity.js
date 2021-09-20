@@ -91,12 +91,16 @@ define([
         console.log('*** called Save in Custom activity ***');
         var postcardURLValue = $('#postcard-url').val();
         var postcardTextValue = $('#postcard-text').val();
+        var email = $('#email').val();
+        var subKey = $('#subKey').val();
+
+        console.log('In Custom Activity, Email: '+email+ ', SubKey: '+ subKey);
 
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
             "subscriberKey": "{{Contact.Attribute.Custom_Journey_Activity_DE.SubscriberKey}}",
-            "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}"
-
+            "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}",
+            "testArg": "test123"
         }];
         
         payload['metaData'].isConfigured = true;
