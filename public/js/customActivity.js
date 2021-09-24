@@ -10,6 +10,7 @@ define([
     var payload = {};
     $(window).ready(onRender);
 
+    console.log('In Custom Activity.js');
     connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
@@ -20,6 +21,7 @@ define([
     connection.on('clickedNext', save);
    
     function onRender() {
+        console.log('In Render');
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
 
@@ -28,13 +30,12 @@ define([
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
-
-        connection.on('requestedSchema', function (data) {
-            // save schema
-            console.log('*** Schema ***', JSON.stringify(data['schema']));
-         });
-
     }
+    
+    connection.on('requestedSchema', function (data) {
+        // save schema
+        console.log('*** Schema ***', JSON.stringify(data['schema']));
+     });
 
     function onRequestedDataSources(dataSources){
         console.log('*** requestedDataSources ***');
