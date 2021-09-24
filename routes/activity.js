@@ -148,7 +148,7 @@ exports.execute = function (req, res) {
             var decodedArgs = decoded.inArguments[0];
             
             logData(req);
-            console.log('decodedArgs: ' + JSON.stringify(decodedArgs));
+            console.log('decodedArgs: ' + JSON.stringify(decodedArgs)); 
             
             console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
             console.log('decodedArgs Subscriber Key: ' + decodedArgs.subscriberKey);

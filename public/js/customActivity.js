@@ -14,6 +14,7 @@ define(['postmonger'], function (Postmonger) {
     connection.on('requestedInteraction', onRequestedInteraction);
     connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
     connection.on('requestedDataSources', onRequestedDataSources);
+    connection.on('requestSchema', onRequestSchema);
 
     connection.on('clickedNext', save);
    
@@ -27,14 +28,9 @@ define(['postmonger'], function (Postmonger) {
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
+        connection.trigger('requestSchema');
+
         
-        connection.on('requestedSchema', function(data){
-            if(data.error){
-                console.error( data.error );
-            } else {
-                console.log('Request Scehema Data: '+ data);
-            }
-        });
     }
 
     // connection.on('requestedSchema', function (data) {
@@ -42,7 +38,14 @@ define(['postmonger'], function (Postmonger) {
     //     console.log('*** Schema ***', JSON.stringify(data['schema']));
     //  });
 
-    
+    function onRequestSchema(data){
+        console.log('*** requestSchema ***');
+        if(data.error){
+            console.log('Error in request schema');
+        }else{
+            console.log(data);
+        }
+    }
 
     function onRequestedDataSources(dataSources){
         console.log('*** requestedDataSources ***');
