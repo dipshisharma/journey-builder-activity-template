@@ -27,7 +27,12 @@ define([
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestDataSources');  
+        connection.trigger('requestDataSources');
+
+        connection.on('requestedSchema', function (data) {
+            // save schema
+            console.log('*** Schema ***', JSON.stringify(data['schema']));
+         });
 
     }
 
