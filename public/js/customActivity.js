@@ -14,7 +14,7 @@ define(['postmonger'], function (Postmonger) {
     connection.on('requestedInteraction', onRequestedInteraction);
     connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
     connection.on('requestedDataSources', onRequestedDataSources);
-    connection.on('requestSchema', onRequestSchema);
+    connection.on('requestedSchema', onRequestSchema);
 
     connection.on('clickedNext', save);
    
