@@ -1,8 +1,5 @@
-define([
-    'postmonger'
-], function (
-    Postmonger
-) {
+define(['postmonger'], function (Postmonger) {
+
     'use strict';
 
     var connection = new Postmonger.Session();
@@ -31,11 +28,19 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
     }
-    
-    connection.on('requestedSchema', function (data) {
-        // save schema
-        console.log('*** Schema ***', JSON.stringify(data['schema']));
-     });
+
+    // connection.on('requestedSchema', function (data) {
+    //     // save schema, call save 
+    //     console.log('*** Schema ***', JSON.stringify(data['schema']));
+    //  });
+
+    connection.on('requestedSchema', function(data){
+        if(data.error){
+            console.error( data.error );
+        } else {
+            console.log('Request Scehema Data: '+ data);
+        }
+    });
 
     function onRequestedDataSources(dataSources){
         console.log('*** requestedDataSources ***');
@@ -53,9 +58,10 @@ define([
     }
 
     function initialize(data) {
-        console.log(data);
+        
         if (data) {
             payload = data;
+            console.log(data);
         }
         
         var hasInArguments = Boolean(
@@ -71,7 +77,9 @@ define([
 
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
-                
+                if (key === 'testArg') {
+                    testArg = val;
+                } 
               
             });
         });
@@ -94,9 +102,8 @@ define([
     }
 
     function save() {
+        
         console.log('*** called Save in Custom activity ***');
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
         var email = $('#email').val();
         var subKey = $('#subKey').val();
 
@@ -108,7 +115,7 @@ define([
             "subscriberKey": subKey,
             // "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}",
             "emailAddress": email,
-            "testArg": "test123"
+            "testArg": testArg
         }];
         
         payload['metaData'].isConfigured = true;

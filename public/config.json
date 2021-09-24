@@ -17,11 +17,11 @@
         "execute": {
            "inArguments":[
              {
-               
+              "testArg": "{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}"
              }
            ],
           "outArguments": [],
-          "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/execute",
+          "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/save",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -65,7 +65,15 @@
     "schema": {
         "arguments": {
             "execute": {
-                "inArguments": [],
+                "inArguments": [
+                  {
+                    "testArg": {
+                      "dataType": "EmailAddress",
+                      "isNullable": false,
+                      "direction" : "in"
+                    }
+                  }
+                ],
                 "outArguments": []
             }
         }
