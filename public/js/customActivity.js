@@ -27,6 +27,14 @@ define(['postmonger'], function (Postmonger) {
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
+        
+        connection.on('requestedSchema', function(data){
+            if(data.error){
+                console.error( data.error );
+            } else {
+                console.log('Request Scehema Data: '+ data);
+            }
+        });
     }
 
     // connection.on('requestedSchema', function (data) {
@@ -34,13 +42,7 @@ define(['postmonger'], function (Postmonger) {
     //     console.log('*** Schema ***', JSON.stringify(data['schema']));
     //  });
 
-    // connection.on('requestedSchema', function(data){
-    //     if(data.error){
-    //         console.error( data.error );
-    //     } else {
-    //         console.log('Request Scehema Data: '+ data);
-    //     }
-    // });
+    
 
     function onRequestedDataSources(dataSources){
         console.log('*** requestedDataSources ***');

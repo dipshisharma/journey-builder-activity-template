@@ -68,7 +68,7 @@
                 "inArguments": [
                   {
                     "testArg": {
-                      "dataType": "EmailAddress",
+                      "dataType": "Email",
                       "isNullable": false,
                       "direction" : "in"
                     }
