@@ -21,7 +21,7 @@
              }
            ],
           "outArguments": [],
-          "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/save",
+          "url": "https://custom-journey-activity-dipshi.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
