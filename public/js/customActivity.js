@@ -34,13 +34,13 @@ define(['postmonger'], function (Postmonger) {
     //     console.log('*** Schema ***', JSON.stringify(data['schema']));
     //  });
 
-    connection.on('requestedSchema', function(data){
-        if(data.error){
-            console.error( data.error );
-        } else {
-            console.log('Request Scehema Data: '+ data);
-        }
-    });
+    // connection.on('requestedSchema', function(data){
+    //     if(data.error){
+    //         console.error( data.error );
+    //     } else {
+    //         console.log('Request Scehema Data: '+ data);
+    //     }
+    // });
 
     function onRequestedDataSources(dataSources){
         console.log('*** requestedDataSources ***');
@@ -77,9 +77,9 @@ define(['postmonger'], function (Postmonger) {
 
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
-                if (key === 'testArg') {
-                    testArg = val;
-                } 
+                // if (key === 'testArg') {
+                //     testArg = val;
+                // } 
               
             });
         });
@@ -115,7 +115,7 @@ define(['postmonger'], function (Postmonger) {
             "subscriberKey": subKey,
             // "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}",
             "emailAddress": email,
-            "testArg": testArg
+            "testArg": "testArg"
         }];
         
         payload['metaData'].isConfigured = true;
