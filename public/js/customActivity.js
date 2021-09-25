@@ -39,14 +39,16 @@ define(['postmonger'], function (Postmonger) {
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             console.log(data);
             // $.each(inArguments, function (index, inArgument) {
-                $.each(data.schema, function (key, val) {
+                $.each(data.schema, function (key, DEField) {
+                    var DEFieldHandlerBar = '{{'+ DEField.key + '}}';
+                    var DEFieldName = DEField.name;
+
                     console.log('Requested Key: '+ key);
-                    console.log('Requested Value: '+ val);
-                    console.log('Requested Value - DE Key: '+ val.key);
-                    console.log('Requested Value - DE Field Name: '+ val.name);
+                    console.log('Requested Value - DE Key: '+ DEFieldHandlerBar);
+                    console.log('Requested Value - DE Field Name: '+ DEFieldName);
                     var input = document.createElement("input");
                     input.setAttribute('type', 'text');
-                    // input.setValue('test');
+                    input.setAttribute('value','test');
                 });
             // });
         }
