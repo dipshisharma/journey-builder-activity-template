@@ -46,7 +46,7 @@ define(['postmonger'], function (Postmonger) {
                     console.log('Requested Value - DE Field Name: '+ val.name);
                     var input = document.createElement("input");
                     input.setAttribute('type', 'text');
-                    input.setValue('test');
+                    // input.setValue('test');
                 });
             // });
         }
