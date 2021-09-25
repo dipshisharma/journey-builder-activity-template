@@ -37,22 +37,34 @@ define(['postmonger'], function (Postmonger) {
             console.log('Error in request schema');
         }else{
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
-            console.log(data);
-            // $.each(inArguments, function (index, inArgument) {
-                $.each(data.schema, function (key, DEField) {
-                    var DEFieldHandlerBar = '{{'+ DEField.key + '}}';
-                    var DEFieldName = DEField.name;
+            $.each(data.schema, function (key, DEField) {
+                var DEFieldHandlerBar = '{{'+ DEField.key + '}}';
+                var DEFieldName = DEField.name;
 
-                    console.log('Requested Key: '+ key);
-                    console.log('Requested Value - DE Key: '+ DEFieldHandlerBar);
-                    console.log('Requested Value - DE Field Name: '+ DEFieldName);
-                    var input = document.createElement("input");
-                    input.type = "text";
-                    input.value = "dynamic input 1";
-                    document.getElementById('formFields').appendChild(input);
-                    console.log('Get Input field: '+ document.getElementById('subKey').value);
-                });
-            // });
+                console.log('Requested Key: '+ key);
+                console.log('Requested Value - DE Key: '+ DEFieldHandlerBar);
+                console.log('Requested Value - DE Field Name: '+ DEFieldName);
+
+
+                //create field label
+                var fieldLabel = document.createElement("label");
+                fieldLabel.value = DEFieldName;
+                document.getElementById('journeyDEFields').appendChild(fieldLabel);
+                
+                //create hidden input field with value as the handleBar of the field
+                var fieldLabelHiddenInput = document.createElement("input");
+                fieldLabelHiddenInput.type = "text";
+                fieldLabelHiddenInput.value = DEFieldHandlerBar;
+                document.getElementById('journeyDEFields').appendChild(fieldLabelHiddenInput);
+                // console.log('Get Input field: '+ document.getElementById('subKey').value);
+
+                //create hidden input field with value as the handleBar of the field
+                var fieldLabelHiddenInput = document.createElement("input");
+                fieldLabelHiddenInput.type = "text";
+                fieldLabelHiddenInput.value = DEFieldHandlerBar;
+                document.getElementById('journeyDEFields').appendChild(fieldLabelHiddenInput);
+                // console.log('Get Input field: '+ document.getElementById('subKey').value);
+            });
         }
     }
 
