@@ -47,8 +47,9 @@ define(['postmonger'], function (Postmonger) {
                     console.log('Requested Value - DE Key: '+ DEFieldHandlerBar);
                     console.log('Requested Value - DE Field Name: '+ DEFieldName);
                     var input = document.createElement("input");
-                    input.setAttribute('type', 'text');
-                    input.setAttribute('value','test');
+                    input.type = "text";
+                    input.value = "dynamic input 1";
+                    document.getElementById('formFields').appendChild(input);
                     console.log('Get Input field: '+ document.getElementById('subKey').value);
                 });
             // });
