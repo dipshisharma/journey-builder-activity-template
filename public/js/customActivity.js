@@ -49,7 +49,7 @@ define(['postmonger'], function (Postmonger) {
                     var input = document.createElement("input");
                     input.setAttribute('type', 'text');
                     input.setAttribute('value','test');
-                    console.log('Get Input field: '+ document.getElementById('subKey').val);
+                    console.log('Get Input field: '+ document.getElementById('subKey').value);
                 });
             // });
         }
