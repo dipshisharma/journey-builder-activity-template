@@ -29,21 +29,23 @@ define(['postmonger'], function (Postmonger) {
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
         connection.trigger('requestSchema');
-
-        
     }
-
-    // connection.on('requestedSchema', function (data) {
-    //     // save schema, call save 
-    //     console.log('*** Schema ***', JSON.stringify(data['schema']));
-    //  });
 
     function onRequestSchema(data){
         console.log('*** requestSchema ***');
         if(data.error){
             console.log('Error in request schema');
         }else{
+            //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             console.log(data);
+            $.each(inArguments, function (index, inArgument) {
+                $.each(data, function (key, val) {
+                    console.log('Requested Key: '+ key);
+                    console.log('Requested Value: '+ val);
+                    console.log('Requested Value - DE Key: '+ val.key);
+                    console.log('Requested Value - DE Field Name: '+ val.name);
+                });
+            });
         }
     }
 
@@ -66,7 +68,7 @@ define(['postmonger'], function (Postmonger) {
         
         if (data) {
             payload = data;
-            console.log(data);
+            console.log('In Initialize'+data);
         }
         
         var hasInArguments = Boolean(
