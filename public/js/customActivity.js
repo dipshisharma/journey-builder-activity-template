@@ -48,7 +48,8 @@ define(['postmonger'], function (Postmonger) {
 
                 //create field label
                 var fieldLabel = document.createElement("label");
-                fieldLabel.value = DEFieldName;
+                fieldLabel.innerHTML = DEFieldName;
+                fieldLabel.className = 'slds-form-element__label';
                 document.getElementById('journeyDEFields').appendChild(fieldLabel);
                 
                 //create hidden input field with value as the handleBar of the field
@@ -59,10 +60,11 @@ define(['postmonger'], function (Postmonger) {
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
 
                 //create hidden input field with value as the handleBar of the field
-                var fieldLabelHiddenInput = document.createElement("input");
-                fieldLabelHiddenInput.type = "text";
-                fieldLabelHiddenInput.value = DEFieldHandlerBar;
-                document.getElementById('journeyDEFields').appendChild(fieldLabelHiddenInput);
+                var textKitFields = document.createElement("select");
+                textKitFields.name = "TextKit Fields";
+                textKitFields.id = "textKitFields";
+                textKitFields.name = "textKitFields";
+                document.getElementById('TextKitFields').appendChild(textKitFields);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
             });
         }
