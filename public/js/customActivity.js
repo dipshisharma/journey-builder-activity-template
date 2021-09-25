@@ -39,7 +39,7 @@ define(['postmonger'], function (Postmonger) {
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             console.log(data);
             // $.each(inArguments, function (index, inArgument) {
-                $.each(data, function (key, val) {
+                $.each(data.schema, function (key, val) {
                     console.log('Requested Key: '+ key);
                     console.log('Requested Value: '+ val);
                     console.log('Requested Value - DE Key: '+ val.key);
