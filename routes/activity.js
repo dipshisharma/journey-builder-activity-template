@@ -149,12 +149,13 @@ exports.execute = function (req, res) {
             
             logData(req);
             console.log('decodedArgs: ' + JSON.stringify(decodedArgs)); 
+            console.log('decodedArgs length: ' + decodedArgs.length); 
             
-            console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
-            console.log('decodedArgs Subscriber Key: ' + decodedArgs.subscriberKey);
-            console.log('decodedArgs Test Args: ' + decodedArgs.testArg);
+            // console.log('decodedArgs Email Address: ' + decodedArgs.emailAddress);
+            // console.log('decodedArgs Subscriber Key: ' + decodedArgs.subscriberKey);
+            // console.log('decodedArgs Test Args: ' + decodedArgs.testArg);
 
-            insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);
+            //insertDE(decodedArgs.subscriberKey, decodedArgs.emailAddress);
             res.send(200, 'Execute');
         } else {
             console.error('inArguments invalid.');
