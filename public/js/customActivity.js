@@ -36,6 +36,20 @@ define(['postmonger'], function (Postmonger) {
         if(data.error){
             console.log('Error in request schema');
         }else{
+
+            //create a picklist to allow for mapping the TextKit fields
+            var textKitFields = document.createElement("select");
+            textKitFields.name = "TextKit Fields";
+            textKitFields.id = "textKitFields";
+            // textKitFields.name = "textKitFields";
+            textKitFields.className ='slds-select';
+            var option1 = document.createElement("option");
+            option1.value = 'None';
+            option1.text = 'None';
+            textKitFields.appendChild(option1);
+
+            const lineBreak = document.createElement('br');
+
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             $.each(data.schema, function (key, DEField) {
                 var DEFieldHandlerBar = '{{'+ DEField.key + '}}';
@@ -54,17 +68,19 @@ define(['postmonger'], function (Postmonger) {
                 
                 //create hidden input field with value as the handleBar of the field
                 var fieldLabelHiddenInput = document.createElement("input");
-                fieldLabelHiddenInput.type = "text";
+                fieldLabelHiddenInput.type = "hidden";
                 fieldLabelHiddenInput.value = DEFieldHandlerBar;
                 document.getElementById('journeyDEFields').appendChild(fieldLabelHiddenInput);
+                document.getElementById('journeyDEFields').appendChild(lineBreak);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
 
-                //create hidden input field with value as the handleBar of the field
-                var textKitFields = document.createElement("select");
-                textKitFields.name = "TextKit Fields";
-                textKitFields.id = "textKitFields";
-                textKitFields.name = "textKitFields";
-                document.getElementById('TextKitFields').appendChild(textKitFields);
+                //add options to the picklist field created
+                var option = document.createElement("option");
+                option.value = DEFieldName;
+                option.text = DEFieldName;
+                textKitFields.appendChild(option);
+                document.getElementById('textKitFields').appendChild(textKitFields);
+                document.getElementById('textKitFields').appendChild(lineBreak);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
             });
         }
