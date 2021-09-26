@@ -186,14 +186,14 @@ define(['postmonger'], function (Postmonger) {
         // Get the container element
         var container = document.getElementById('step1');
 
-        inputs = container.getElementsByTagName('input');
-        for (index = 0; index < inputs.length; ++index) {
+        var inputs = container.getElementsByTagName('input');
+        for (var index = 0; index < inputs.length; ++index) {
             // deal with inputs[index] element.
             console.log('Input found, Id: '+ inputs[index].id);
         }
         
-        selects = container.getElementsByTagName('select');
-        for (index = 0; index < selects.length; ++index) {
+        var selects = container.getElementsByTagName('select');
+        for (var index = 0; index < selects.length; ++index) {
             // deal with inputs[index] element.
             console.log('Input found, Id: '+ selects[index].options);
         }
@@ -214,7 +214,7 @@ define(['postmonger'], function (Postmonger) {
                 Example of using the plain text data entered in the field on config screen
                 var email = $('#email').val();
                 var subKey = $('#subKey').val();
-                
+
                 "subscriberKey": subKey,
                 "emailAddress": email
             */
