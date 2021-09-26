@@ -36,10 +36,10 @@ define(['postmonger'], function (Postmonger) {
         if(data.error){
             console.log('Error in request schema');
         }else{
-            
+            var i=0;
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             $.each(data.schema, function (key, DEField) {
-                var i=0;
+                
                 var DEFieldHandlerBar = '{{'+ DEField.key + '}}';
                 var DEFieldName = DEField.name;
 
