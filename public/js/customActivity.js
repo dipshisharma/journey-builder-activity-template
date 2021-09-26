@@ -183,6 +183,9 @@ define(['postmonger'], function (Postmonger) {
         var email = $('#email').val();
         var subKey = $('#subKey').val();
 
+        // Get the container element
+        container = document.getElementById('step1');
+
         inputs = container.getElementsByTagName('input');
         for (index = 0; index < inputs.length; ++index) {
             // deal with inputs[index] element.
