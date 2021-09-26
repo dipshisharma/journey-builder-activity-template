@@ -81,8 +81,8 @@ define(['postmonger'], function (Postmonger) {
                 //create hidden input field with value as the handleBar of the field
                 var fieldLabelHiddenInput = document.createElement("input");
                 fieldLabelHiddenInput.type = "hidden";
-                fieldLabelHiddenInput.name = DEFieldName;
-                fieldLabelHiddenInput.id = DEFieldName + "inputHidden";
+                fieldLabelHiddenInput.name = DEFieldName + "-InputHidden";
+                fieldLabelHiddenInput.id = DEFieldName + "-InputHidden";
                 fieldLabelHiddenInput.value = DEFieldHandlerBar;
                 document.getElementById("journeyDEFields").appendChild(fieldLabelHiddenInput);
                 var lineBreak = document.createElement("br");
@@ -91,8 +91,8 @@ define(['postmonger'], function (Postmonger) {
 
                 //create a picklist with all the DE fields to allow for mapping the TextKit fields
                 var textKitFields = document.createElement("select");
-                textKitFields.name = "TextKit Fields";
-                textKitFields.id = "textKitFields";
+                textKitFields.name = DEFieldName + "-Select";
+                textKitFields.id = DEFieldName+ "-Select";;
                 textKitFields.className ="slds-select";
                 var option1 = document.createElement("option");
                 option1.value = "None";
