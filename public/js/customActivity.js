@@ -36,29 +36,29 @@ define(['postmonger'], function (Postmonger) {
         if(data.error){
             console.log('Error in request schema');
         }else{
-            var lineBreak = document.createElement("br");
+            
 
-            //create a picklist with all the DE fields to allow for mapping the TextKit fields
-            var textKitFields = document.createElement("select");
-            textKitFields.name = "TextKit Fields";
-            textKitFields.id = "textKitFields";
-            textKitFields.className ="slds-select";
-            var option1 = document.createElement("option");
-            option1.value = "None";
-            option1.text = "None";
-            textKitFields.appendChild(option1);
+            // //create a picklist with all the DE fields to allow for mapping the TextKit fields
+            // var textKitFields = document.createElement("select");
+            // textKitFields.name = "TextKit Fields";
+            // textKitFields.id = "textKitFields";
+            // textKitFields.className ="slds-select";
+            // var option1 = document.createElement("option");
+            // option1.value = "None";
+            // option1.text = "None";
+            // textKitFields.appendChild(option1);
 
-            $.each(data.schema, function (key, DEField) {
-                var DEFieldName = DEField.name;
+            // $.each(data.schema, function (key, DEField) {
+            //     var DEFieldName = DEField.name;
 
-                //add options to the picklist field created
-                var option = document.createElement("option");
-                option.value = DEFieldName;
-                option.text = DEFieldName;
-                option.id = DEFieldName + "option";
-                textKitFields.appendChild(option);
-                // document.getElementById('textKitFields').appendChild(textKitFields);
-            });
+            //     //add options to the picklist field created
+            //     var option = document.createElement("option");
+            //     option.value = DEFieldName;
+            //     option.text = DEFieldName;
+            //     option.id = DEFieldName + "option";
+            //     textKitFields.appendChild(option);
+            //     // document.getElementById('textKitFields').appendChild(textKitFields);
+            // });
 
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             $.each(data.schema, function (key, DEField) {
@@ -85,10 +85,33 @@ define(['postmonger'], function (Postmonger) {
                 fieldLabelHiddenInput.id = DEFieldName + "inputHidden";
                 fieldLabelHiddenInput.value = DEFieldHandlerBar;
                 document.getElementById("journeyDEFields").appendChild(fieldLabelHiddenInput);
+                var lineBreak = document.createElement("br");
                 document.getElementById("journeyDEFields").appendChild(lineBreak);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
 
+                //create a picklist with all the DE fields to allow for mapping the TextKit fields
+                var textKitFields = document.createElement("select");
+                textKitFields.name = "TextKit Fields";
+                textKitFields.id = "textKitFields";
+                textKitFields.className ="slds-select";
+                var option1 = document.createElement("option");
+                option1.value = "None";
+                option1.text = "None";
+                textKitFields.appendChild(option1);
+
+                $.each(data.schema, function (key, DEField) {
+                    var DEFieldName = DEField.name;
+
+                    //add options to the picklist field created
+                    var option = document.createElement("option");
+                    option.value = DEFieldName;
+                    option.text = DEFieldName;
+                    option.id = DEFieldName + "option";
+                    textKitFields.appendChild(option);
+                    // document.getElementById('textKitFields').appendChild(textKitFields);
+                });
                 document.getElementById("textKitFields").appendChild(textKitFields);
+                var lineBreak = document.createElement("br");
                 document.getElementById("textKitFields").appendChild(lineBreak);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
             });
@@ -159,6 +182,18 @@ define(['postmonger'], function (Postmonger) {
         console.log('*** called Save in Custom activity ***');
         var email = $('#email').val();
         var subKey = $('#subKey').val();
+
+        inputs = container.getElementsByTagName('input');
+        for (index = 0; index < inputs.length; ++index) {
+            // deal with inputs[index] element.
+            console.log('Input found, Id: '+ inputs[index].id);
+        }
+        
+        selects = container.getElementsByTagName('select');
+        for (index = 0; index < selects.length; ++index) {
+            // deal with inputs[index] element.
+            console.log('Input found, Id: '+ selects[index].options);
+        }
 
         console.log('In Custom Activity, Email: '+email+ ', SubKey: '+ subKey);
 
