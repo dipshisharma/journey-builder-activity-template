@@ -192,7 +192,7 @@ define(['postmonger'], function (Postmonger) {
             console.log('Input found, Id: '+ inputs[index].id);
         }
         
-        var selects = container.getElementsByTagName('select');
+        var selects = container.getElementsByTagName('option');
         for (var index = 0; index < selects.length; ++index) {
             // deal with inputs[index] element.
             console.log('Input found, Id: '+ selects[index].options);
