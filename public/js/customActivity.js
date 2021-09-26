@@ -173,7 +173,7 @@ define(['postmonger'], function (Postmonger) {
             id = 'Select-'+index;
             var select = document.getElementById(id);
             var selectVal = select.options[select.selectedIndex].value;
-            inArgs += '"'+selectVal+'":'+inputHidden+',';
+            inArgs += selectVal+':'+inputHidden+',';
         }
         console.log(inArgs);
         payload['arguments'].execute.inArguments = [{
