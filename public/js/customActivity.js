@@ -87,7 +87,9 @@ define(['postmonger'], function (Postmonger) {
                 var lineBreak = document.createElement("br");
                 document.getElementById("textKitFields").appendChild(lineBreak);
 
-                i++;
+                console.log('i: '+i);
+                i+=1;
+                console.log('i: '+i);
             });
         }
     }
