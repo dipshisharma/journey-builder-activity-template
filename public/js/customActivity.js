@@ -172,7 +172,9 @@ define(['postmonger'], function (Postmonger) {
             id = 'Select-'+index;
             var select = document.getElementById(id);
             var selectVal = select.options[select.selectedIndex].value;
-            console.log(inputHidden+':'+selectVal);
+            var inArgs = '"'+selectVal+'":'+inputHidden+',';
+            console.log(inArgs);
+
         }
         
         payload['arguments'].execute.inArguments = [{
@@ -193,9 +195,10 @@ define(['postmonger'], function (Postmonger) {
                 "subscriberKey": subKey,
                 "emailAddress": email
             */
-            "subscriberKey": subKey,
-            "emailAddress": email,
-            "testArg": "testArg"
+            inArgs
+            // "subscriberKey": subKey,
+            // "emailAddress": email,
+            // "testArg": "testArg",
         }];
         
         payload['metaData'].isConfigured = true;
