@@ -165,7 +165,7 @@ define(['postmonger'], function (Postmonger) {
             // deal with inputs[index] element.
             
             console.log('Input found, Id: '+ inputs[index].id);
-            var id= 'InputHidden'+index;
+            var id= 'InputHidden-'+index;
             var inputHidden = document.getElementById(id).value;
             id = 'Select-'+index;
             var select = document.getElementById('id');
