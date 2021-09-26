@@ -168,7 +168,7 @@ define(['postmonger'], function (Postmonger) {
             var id= 'InputHidden-'+index;
             var inputHidden = document.getElementById(id).value;
             id = 'Select-'+index;
-            var select = document.getElementById('id');
+            var select = document.getElementById(id);
             var selectVal = select.options[select.selectedIndex].value;
             console.log(inputHidden+':'+selectVal);
         }
