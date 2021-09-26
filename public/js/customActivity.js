@@ -36,27 +36,26 @@ define(['postmonger'], function (Postmonger) {
         if(data.error){
             console.log('Error in request schema');
         }else{
-            var lineBreak = document.createElement('br');
-            var textKitFields;
+            var lineBreak = document.createElement("br");
+
+            //create a picklist with all the DE fields to allow for mapping the TextKit fields
+            var textKitFields = document.createElement("select");
+            textKitFields.name = "TextKit Fields";
+            textKitFields.id = "textKitFields";
+            textKitFields.className ="slds-select";
+            var option1 = document.createElement("option");
+            option1.value = "None";
+            option1.text = "None";
+            textKitFields.appendChild(option1);
 
             $.each(data.schema, function (key, DEField) {
                 var DEFieldName = DEField.name;
-
-                //create a picklist with all the DE fields to allow for mapping the TextKit fields
-                textKitFields = document.createElement("select");
-                textKitFields.name = "TextKit Fields";
-                textKitFields.id = "textKitFields";
-                textKitFields.className ='slds-select';
-                var option1 = document.createElement("option");
-                option1.value = 'None';
-                option1.text = 'None';
-                textKitFields.appendChild(option1);
 
                 //add options to the picklist field created
                 var option = document.createElement("option");
                 option.value = DEFieldName;
                 option.text = DEFieldName;
-                option.id = DEFieldName + 'option';
+                option.id = DEFieldName + "option";
                 textKitFields.appendChild(option);
                 // document.getElementById('textKitFields').appendChild(textKitFields);
             });
@@ -76,21 +75,21 @@ define(['postmonger'], function (Postmonger) {
                 fieldLabel.innerHTML = DEFieldName;
                 fieldLabel.name = DEFieldName;
                 fieldLabel.id = DEFieldName;
-                fieldLabel.className = 'slds-form-element__label';
-                document.getElementById('journeyDEFields').appendChild(fieldLabel);
+                fieldLabel.className = "slds-form-element__label";
+                document.getElementById("journeyDEFields").appendChild(fieldLabel);
                 
                 //create hidden input field with value as the handleBar of the field
                 var fieldLabelHiddenInput = document.createElement("input");
                 fieldLabelHiddenInput.type = "hidden";
                 fieldLabelHiddenInput.name = DEFieldName;
-                fieldLabelHiddenInput.id = DEFieldName + 'inputHidden';
+                fieldLabelHiddenInput.id = DEFieldName + "inputHidden";
                 fieldLabelHiddenInput.value = DEFieldHandlerBar;
-                document.getElementById('journeyDEFields').appendChild(fieldLabelHiddenInput);
-                document.getElementById('journeyDEFields').appendChild(lineBreak);
+                document.getElementById("journeyDEFields").appendChild(fieldLabelHiddenInput);
+                document.getElementById("journeyDEFields").appendChild(lineBreak);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
 
-                document.getElementById('textKitFields').appendChild(textKitFields);
-                document.getElementById('textKitFields').appendChild(lineBreak);
+                document.getElementById("textKitFields").appendChild(textKitFields);
+                document.getElementById("textKitFields").appendChild(lineBreak);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
             });
         }
