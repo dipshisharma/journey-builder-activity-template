@@ -37,18 +37,9 @@ define(['postmonger'], function (Postmonger) {
             console.log('Error in request schema');
         }else{
 
-            //create a picklist to allow for mapping the TextKit fields
-            var textKitFields = document.createElement("select");
-            textKitFields.name = "TextKit Fields";
-            textKitFields.id = "textKitFields";
-            // textKitFields.name = "textKitFields";
-            textKitFields.className ='slds-select';
-            var option1 = document.createElement("option");
-            option1.value = 'None';
-            option1.text = 'None';
-            textKitFields.appendChild(option1);
+            
 
-            const lineBreak = document.createElement('br');
+            var lineBreak = document.createElement('br');
 
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             $.each(data.schema, function (key, DEField) {
@@ -63,21 +54,37 @@ define(['postmonger'], function (Postmonger) {
                 //create field label
                 var fieldLabel = document.createElement("label");
                 fieldLabel.innerHTML = DEFieldName;
+                fieldLabel.name = DEFieldName;
+                fieldLabel.id = DEFieldName;
                 fieldLabel.className = 'slds-form-element__label';
                 document.getElementById('journeyDEFields').appendChild(fieldLabel);
                 
                 //create hidden input field with value as the handleBar of the field
                 var fieldLabelHiddenInput = document.createElement("input");
-                fieldLabelHiddenInput.type = "hidden";
+                fieldLabelHiddenInput.type = "text";
+                fieldLabelHiddenInput.name = DEFieldName;
+                fieldLabelHiddenInput.id = DEFieldName + 'inputHidden';
                 fieldLabelHiddenInput.value = DEFieldHandlerBar;
                 document.getElementById('journeyDEFields').appendChild(fieldLabelHiddenInput);
                 document.getElementById('journeyDEFields').appendChild(lineBreak);
                 // console.log('Get Input field: '+ document.getElementById('subKey').value);
 
+
+                //create a picklist to allow for mapping the TextKit fields
+                var textKitFields = document.createElement("select");
+                textKitFields.name = "TextKit Fields";
+                textKitFields.id = "textKitFields";
+                textKitFields.className ='slds-select';
+                var option1 = document.createElement("option");
+                option1.value = 'None';
+                option1.text = 'None';
+                textKitFields.appendChild(option1);
+
                 //add options to the picklist field created
                 var option = document.createElement("option");
                 option.value = DEFieldName;
                 option.text = DEFieldName;
+                option.id = DEFieldName + 'option';
                 textKitFields.appendChild(option);
                 document.getElementById('textKitFields').appendChild(textKitFields);
                 document.getElementById('textKitFields').appendChild(lineBreak);
