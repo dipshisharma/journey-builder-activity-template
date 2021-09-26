@@ -184,7 +184,7 @@ define(['postmonger'], function (Postmonger) {
         var subKey = $('#subKey').val();
 
         // Get the container element
-        container = document.getElementById('step1');
+        var container = document.getElementById('step1');
 
         inputs = container.getElementsByTagName('input');
         for (index = 0; index < inputs.length; ++index) {
@@ -202,9 +202,23 @@ define(['postmonger'], function (Postmonger) {
 
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
-            // "subscriberKey": "{{Contact.Attribute.Custom_Journey_Activity_DE.SubscriberKey}}",
+            /*
+                Example of using the Contact Modal Data Binding
+                "subscriberKey": "{{Contact.Attribute.Custom_Journey_Activity_DE.SubscriberKey}}",
+                "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}"
+
+                Example of using the Event/Journey Context
+                "subscriberKey": "{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.SubscriberKey}}",
+                "emailAddress": "{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.EmailAddress}}"
+
+                Example of using the plain text data entered in the field on config screen
+                var email = $('#email').val();
+                var subKey = $('#subKey').val();
+                
+                "subscriberKey": subKey,
+                "emailAddress": email
+            */
             "subscriberKey": subKey,
-            // "emailAddress": "{{Contact.Attribute.Custom_Journey_Activity_DE.EmailAddress}}",
             "emailAddress": email,
             "testArg": "testArg"
         }];
