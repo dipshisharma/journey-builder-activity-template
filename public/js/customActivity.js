@@ -37,38 +37,11 @@ define(['postmonger'], function (Postmonger) {
             console.log('Error in request schema');
         }else{
             
-
-            // //create a picklist with all the DE fields to allow for mapping the TextKit fields
-            // var textKitFields = document.createElement("select");
-            // textKitFields.name = "TextKit Fields";
-            // textKitFields.id = "textKitFields";
-            // textKitFields.className ="slds-select";
-            // var option1 = document.createElement("option");
-            // option1.value = "None";
-            // option1.text = "None";
-            // textKitFields.appendChild(option1);
-
-            // $.each(data.schema, function (key, DEField) {
-            //     var DEFieldName = DEField.name;
-
-            //     //add options to the picklist field created
-            //     var option = document.createElement("option");
-            //     option.value = DEFieldName;
-            //     option.text = DEFieldName;
-            //     option.id = DEFieldName + "option";
-            //     textKitFields.appendChild(option);
-            //     // document.getElementById('textKitFields').appendChild(textKitFields);
-            // });
-
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             $.each(data.schema, function (key, DEField) {
+                var i=0;
                 var DEFieldHandlerBar = '{{'+ DEField.key + '}}';
                 var DEFieldName = DEField.name;
-
-                console.log('Requested Key: '+ key);
-                console.log('Requested Value - DE Key: '+ DEFieldHandlerBar);
-                console.log('Requested Value - DE Field Name: '+ DEFieldName);
-
 
                 //create field label
                 var fieldLabel = document.createElement("label");
@@ -81,8 +54,8 @@ define(['postmonger'], function (Postmonger) {
                 //create hidden input field with value as the handleBar of the field
                 var fieldLabelHiddenInput = document.createElement("input");
                 fieldLabelHiddenInput.type = "hidden";
-                fieldLabelHiddenInput.name = DEFieldName + "-InputHidden";
-                fieldLabelHiddenInput.id = DEFieldName + "-InputHidden";
+                fieldLabelHiddenInput.name = "InputHidden-"+i;
+                fieldLabelHiddenInput.id = "InputHidden-"+i;
                 fieldLabelHiddenInput.value = DEFieldHandlerBar;
                 document.getElementById("journeyDEFields").appendChild(fieldLabelHiddenInput);
                 var lineBreak = document.createElement("br");
@@ -91,8 +64,8 @@ define(['postmonger'], function (Postmonger) {
 
                 //create a picklist with all the DE fields to allow for mapping the TextKit fields
                 var textKitFields = document.createElement("select");
-                textKitFields.name = DEFieldName + "-Select";
-                textKitFields.id = DEFieldName+ "-Select";;
+                textKitFields.name = "Select-" + i;
+                textKitFields.id = "Select-"+ i;
                 textKitFields.className ="slds-select";
                 var option1 = document.createElement("option");
                 option1.value = "None";
@@ -113,7 +86,8 @@ define(['postmonger'], function (Postmonger) {
                 document.getElementById("textKitFields").appendChild(textKitFields);
                 var lineBreak = document.createElement("br");
                 document.getElementById("textKitFields").appendChild(lineBreak);
-                // console.log('Get Input field: '+ document.getElementById('subKey').value);
+
+                i++;
             });
         }
     }
@@ -189,17 +163,16 @@ define(['postmonger'], function (Postmonger) {
         var inputs = container.getElementsByTagName('input');
         for (var index = 0; index < inputs.length; ++index) {
             // deal with inputs[index] element.
+            
             console.log('Input found, Id: '+ inputs[index].id);
+            var id= 'InputHidden'+index;
+            var inputHidden = document.getElementById(id).value;
+            id = 'Select-'+index;
+            var select = document.getElementById('id');
+            var selectVal = select.options[select.selectedIndex].value;
+            console.log(inputHidden+':'+selectVal);
         }
         
-        var selects = container.getElementsByTagName('select');
-        for (var index = 0; index < selects.length; ++index) {
-            // deal with inputs[index] element.
-            console.log('Input found, Id: '+ selects[index].options);
-        }
-
-        console.log('In Custom Activity, Email: '+email+ ', SubKey: '+ subKey);
-
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
             /*
