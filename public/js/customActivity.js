@@ -37,12 +37,13 @@ define(['postmonger'], function (Postmonger) {
             console.log('Error in request schema');
         }else{
             var lineBreak = document.createElement('br');
-            
+            var textKitFields;
+
             $.each(data.schema, function (key, DEField) {
                 var DEFieldName = DEField.name;
 
                 //create a picklist with all the DE fields to allow for mapping the TextKit fields
-                var textKitFields = document.createElement("select");
+                textKitFields = document.createElement("select");
                 textKitFields.name = "TextKit Fields";
                 textKitFields.id = "textKitFields";
                 textKitFields.className ='slds-select';
