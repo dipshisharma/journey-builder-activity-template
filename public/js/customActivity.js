@@ -158,7 +158,7 @@ define(['postmonger'], function (Postmonger) {
         console.log('*** called Save in Custom activity ***');
         var email = $('#email').val();
         var subKey = $('#subKey').val();
-        var inArgs='';
+        var inArgs={};
 
         // Get the container element
         var container = document.getElementById('step1');
@@ -173,9 +173,10 @@ define(['postmonger'], function (Postmonger) {
             id = 'Select-'+index;
             var select = document.getElementById(id);
             var selectVal = select.options[select.selectedIndex].value;
-            inArgs += selectVal+':'+inputHidden+',';
+            // inArgs += selectVal+':'+inputHidden+',';
+            inArgs.selectVal = inputHidden;
         }
-        console.log(inArgs);
+        console.log('InArgs: '+inArgs);
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
             /*
@@ -194,6 +195,7 @@ define(['postmonger'], function (Postmonger) {
                 "subscriberKey": subKey,
                 "emailAddress": email
             */
+        //    inArgs,
            "SubscriberKey":"{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.SubscriberKey}}",
            "EmailAddress":"{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.EmailAddress}}",
            "PhoneNumber":"{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.PhoneNumber}}",
