@@ -193,7 +193,7 @@ define(['postmonger'], function (Postmonger) {
                 "subscriberKey": subKey,
                 "emailAddress": email
             */
-        //    inArgs,
+            inArgs,
            "SubscriberKey":"{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.SubscriberKey}}",
            "EmailAddress":"{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.EmailAddress}}",
            "PhoneNumber":"{{Event.DEAudience-e11248bc-6e36-7a7f-9ef0-887766743227.PhoneNumber}}",
