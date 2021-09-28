@@ -87,9 +87,7 @@ define(['postmonger'], function (Postmonger) {
                 var lineBreak = document.createElement("br");
                 document.getElementById("textKitFields").appendChild(lineBreak);
 
-                console.log('i: '+i);
                 i+=1;
-                console.log('i: '+i);
             });
         }
     }
@@ -176,7 +174,7 @@ define(['postmonger'], function (Postmonger) {
             // inArgs += selectVal+':'+inputHidden+',';
             inArgs.selectVal = inputHidden;
         }
-        console.log('InArgs: '+inArgs);
+        console.log('InArgs: '+JSON.stringify(inArgs));
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
             /*
