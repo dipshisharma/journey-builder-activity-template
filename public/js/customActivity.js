@@ -70,19 +70,31 @@ define(['postmonger'], function (Postmonger) {
                 var option1 = document.createElement("option");
                 option1.value = "None";
                 option1.text = "None";
+                var option2 = document.createElement("option");
+                option2.value = "TextKit:Email Address";
+                option2.text = "TextKit:Email Address";
+                var option3 = document.createElement("option");
+                option3.value = "TextKit:Subscriber Key";
+                option3.text = "TextKit:Subscriber Key";
+                var option4 = document.createElement("option");
+                option4.value = "TextKit:Phone";
+                option4.text = "TextKit:Phone";
                 textKitFields.appendChild(option1);
+                textKitFields.appendChild(option2);
+                textKitFields.appendChild(option3);
+                textKitFields.appendChild(option4);
 
-                $.each(data.schema, function (key, DEField) {
-                    var DEFieldName = DEField.name;
+                // $.each(data.schema, function (key, DEField) {
+                //     var DEFieldName = DEField.name;
 
-                    //add options to the picklist field created
-                    var option = document.createElement("option");
-                    option.value = DEFieldName;
-                    option.text = DEFieldName;
-                    option.id = DEFieldName + "option";
-                    textKitFields.appendChild(option);
-                    // document.getElementById('textKitFields').appendChild(textKitFields);
-                });
+                //     //add options to the picklist field created
+                //     var option = document.createElement("option");
+                //     option.value = DEFieldName;
+                //     option.text = DEFieldName;
+                //     option.id = DEFieldName + "option";
+                //     textKitFields.appendChild(option);
+                //     // document.getElementById('textKitFields').appendChild(textKitFields);
+                // });
                 document.getElementById("textKitFields").appendChild(textKitFields);
                 var lineBreak = document.createElement("br");
                 document.getElementById("textKitFields").appendChild(lineBreak);
