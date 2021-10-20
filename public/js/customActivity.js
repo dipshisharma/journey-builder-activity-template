@@ -7,7 +7,7 @@ define(['postmonger'], function (Postmonger) {
     var payload = {};
     $(window).ready(onRender);
 
-    console.log('In Custom Activity.js');
+    // console.log('In Custom Activity.js');
     connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
@@ -37,6 +37,7 @@ define(['postmonger'], function (Postmonger) {
             console.log('Error in request schema');
         }else{
             var i=0;
+            console.log(data);
             //loop through the fields, and create inputs (labels & hidden inputs for values) for all the DE fields
             $.each(data.schema, function (key, DEField) {
                 
