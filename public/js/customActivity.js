@@ -124,7 +124,8 @@ define(['postmonger'], function (Postmonger) {
         
         if (data) {
             payload = data;
-            console.log('In Initialize'+data);
+            console.log('In Initialize');
+            console.log(data);
         }
         
         var hasInArguments = Boolean(
